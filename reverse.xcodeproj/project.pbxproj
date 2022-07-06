@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		F003C8002872F18D000DD10F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C7FF2872F18D000DD10F /* AppDelegate.swift */; };
 		F003C8022872F18D000DD10F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8012872F18D000DD10F /* SceneDelegate.swift */; };
-		F003C8042872F18D000DD10F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8032872F18D000DD10F /* ViewController.swift */; };
 		F003C8072872F18D000DD10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F003C8052872F18D000DD10F /* Main.storyboard */; };
 		F003C8092872F18E000DD10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F003C8082872F18E000DD10F /* Assets.xcassets */; };
 		F003C80C2872F18E000DD10F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F003C80A2872F18E000DD10F /* LaunchScreen.storyboard */; };
 		F003C8172872F18E000DD10F /* reverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8162872F18E000DD10F /* reverseTests.swift */; };
 		F003C8212872F18E000DD10F /* reverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8202872F18E000DD10F /* reverseUITests.swift */; };
 		F003C8232872F18E000DD10F /* reverseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8222872F18E000DD10F /* reverseUITestsLaunchTests.swift */; };
+		F0F17F482875BCB000EF37B8 /* ReverseWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F17F462875BCB000EF37B8 /* ReverseWordsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		F003C7FC2872F18D000DD10F /* reverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F003C7FF2872F18D000DD10F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F003C8012872F18D000DD10F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F003C8032872F18D000DD10F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F003C8062872F18D000DD10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F003C8082872F18E000DD10F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F003C80B2872F18E000DD10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		F003C81C2872F18E000DD10F /* reverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reverseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F003C8202872F18E000DD10F /* reverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseUITests.swift; sourceTree = "<group>"; };
 		F003C8222872F18E000DD10F /* reverseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F0F17F462875BCB000EF37B8 /* ReverseWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseWordsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +101,11 @@
 			children = (
 				F003C7FF2872F18D000DD10F /* AppDelegate.swift */,
 				F003C8012872F18D000DD10F /* SceneDelegate.swift */,
-				F003C8032872F18D000DD10F /* ViewController.swift */,
 				F003C8052872F18D000DD10F /* Main.storyboard */,
 				F003C8082872F18E000DD10F /* Assets.xcassets */,
 				F003C80A2872F18E000DD10F /* LaunchScreen.storyboard */,
 				F003C80D2872F18E000DD10F /* Info.plist */,
+				F0F17F462875BCB000EF37B8 /* ReverseWordsViewController.swift */,
 			);
 			path = reverse;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F003C8042872F18D000DD10F /* ViewController.swift in Sources */,
+				F0F17F482875BCB000EF37B8 /* ReverseWordsViewController.swift in Sources */,
 				F003C8002872F18D000DD10F /* AppDelegate.swift in Sources */,
 				F003C8022872F18D000DD10F /* SceneDelegate.swift in Sources */,
 			);
