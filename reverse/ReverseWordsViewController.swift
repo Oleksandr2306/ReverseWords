@@ -11,12 +11,12 @@ final class ReverseWordsViewController: UIViewController {
 
     @IBOutlet weak private var textField: UITextField!
     @IBOutlet weak private var button: UIButton!
-    @IBOutlet weak var reversedText: UILabel!
+    @IBOutlet weak private var reversedText: UILabel!
     
     //words to reverse
     private var sentence = ""
     
-    var isReversed = false
+    private var isReversed = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
