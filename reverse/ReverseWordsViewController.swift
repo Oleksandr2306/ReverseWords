@@ -25,10 +25,6 @@ final class ReverseWordsViewController: UIViewController {
         button.isEnabled = false
         textField.delegate = self
         textField.borderStyle = UITextField.BorderStyle.none
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: textField.frame.height - 1, width: textField.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.white.cgColor
-        textField.layer.addSublayer(bottomLine)
     }
     
     @IBAction func buttonTapped() {
