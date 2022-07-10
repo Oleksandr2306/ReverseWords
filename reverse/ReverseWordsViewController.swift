@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReverseViewController.swift
 //  reverse
 //
 //  Created by Oleksandr Melnyk on 04.07.2022.
@@ -16,7 +16,16 @@ final class ReverseWordsViewController: UIViewController {
     //words to reverse
     private var sentence = ""
     
-    private var isReversed = false
+    private var isReversed = false {
+        didSet {
+            if isReversed {
+                button.setTitle("Clear", for: .normal)
+            } else {
+                button.setTitle("Reverse", for: .normal)
+            }
+        }
+        
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +39,10 @@ final class ReverseWordsViewController: UIViewController {
     @IBAction func buttonTapped() {
         isReversed.toggle()
         if isReversed {
-            button.setTitle("Clear", for: .normal)
             reversedText.text = String(sentence.components(separatedBy: " ").map({
                 $0.reversed()
             }).joined(separator: " "))
         } else {
-            button.setTitle("Reverse", for: .normal)
             button.isEnabled.toggle()
             textField.text = ""
             reversedText.text = ""
@@ -50,12 +57,9 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        sentence = textField.text!
-        if textField.text == "" {
-            button.isEnabled = false
-        } else {
-            button.isEnabled = true
-        }
+        guard let inputText = textField.text else { return }
+        sentence = inputText
+        button.isEnabled = !sentence.isEmpty
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -64,9 +68,9 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        button.isEnabled = true
         if isReversed {
             isReversed.toggle()
-            button.setTitle("Reverse", for: .normal)
         }
         return true
     }
