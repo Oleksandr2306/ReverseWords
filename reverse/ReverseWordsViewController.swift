@@ -72,6 +72,10 @@ extension ReverseWordsViewController: UITextFieldDelegate {
         if isReversed {
             isReversed.toggle()
         }
+        
+        if (range.length == textField.text?.count) {
+            button.isEnabled = false
+        }
         return true
     }
 }
