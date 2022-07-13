@@ -14,7 +14,7 @@ final class ReverseWordsViewController: UIViewController {
     @IBOutlet weak private var reversedText: UILabel!
     
     //words to reverse
-    private var sentence = ""
+    private var sentence = "" 
     
     private var isReversed = false {
         didSet {
@@ -39,6 +39,8 @@ final class ReverseWordsViewController: UIViewController {
     @IBAction func buttonTapped() {
         isReversed.toggle()
         if isReversed {
+            guard let inputText = textField.text else { return }
+            sentence = inputText
             reversedText.text = String(sentence.components(separatedBy: " ").map({
                 $0.reversed()
             }).joined(separator: " "))
@@ -46,6 +48,14 @@ final class ReverseWordsViewController: UIViewController {
             button.isEnabled.toggle()
             textField.text = ""
             reversedText.text = ""
+        }
+    }
+    
+    @IBAction func textFieldEditing(_ sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+            button.isEnabled = true
+        } else {
+            button.isEnabled = false
         }
     }
 }
@@ -73,9 +83,6 @@ extension ReverseWordsViewController: UITextFieldDelegate {
             isReversed.toggle()
         }
         
-        if (range.length == textField.text?.count) {
-            button.isEnabled = false
-        }
         return true
     }
 }
