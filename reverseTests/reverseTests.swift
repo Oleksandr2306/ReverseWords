@@ -10,12 +10,15 @@ import XCTest
 
 class reverseTests: XCTestCase {
 
+    var reverseScreen: ReverseWordsViewController!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        reverseScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "reverse") as? ReverseWordsViewController
+        reverseScreen.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        reverseScreen = nil
     }
 
     func testExample() throws {
@@ -23,11 +26,68 @@ class reverseTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testNotEmptyTextFieldWithAlphabeticSymbols() throws {
+        
+        //Given
+        reverseScreen.textField.text = "Test string"
+        let expectedResult = "tseT gnirts"
+        
+        //When
+        if reverseScreen.textField.text != nil {
+            reverseScreen.button.sendActions(for: .allTouchEvents)
         }
+        
+        //Then
+        XCTAssertEqual(expectedResult, reverseScreen.reversedText.text)
+        
+    }
+    
+    func testNotEmptyTextFieldWithNumbers() throws {
+        
+        //Given
+        reverseScreen.textField.text = "3455654"
+        let expectedResult = "4565543"
+        
+        //When
+        if reverseScreen.textField.text != nil {
+            reverseScreen.button.sendActions(for: .allTouchEvents)
+        }
+        
+        //Then
+        XCTAssertEqual(expectedResult, reverseScreen.reversedText.text)
+        
+    }
+    
+    func testNotEmptyTextFieldWithOnlyOneSymbol() throws {
+        
+        //Given
+        reverseScreen.textField.text = "A"
+        let expectedResult = "A"
+        
+        //When
+        if reverseScreen.textField.text != nil {
+            reverseScreen.button.sendActions(for: .allTouchEvents)
+        }
+        
+        //Then
+        XCTAssertEqual(expectedResult, reverseScreen.reversedText.text)
+        
+    }
+    
+    func testNotEmptyTextFieldWithEmojies() throws {
+        
+        //Given
+        reverseScreen.textField.text = "🙂😌😀"
+        let expectedResult = "😀😌🙂"
+        
+        //When
+        if reverseScreen.textField.text != nil {
+            reverseScreen.button.sendActions(for: .allTouchEvents)
+        }
+        
+        //Then
+        XCTAssertEqual(expectedResult, reverseScreen.reversedText.text)
+        
     }
 
 }
