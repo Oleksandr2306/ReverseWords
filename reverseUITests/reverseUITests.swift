@@ -13,6 +13,7 @@ class reverseUITests: XCTestCase {
     lazy var inputTF = app.textFields["InputTF"]
     lazy var button = app.buttons["ReverseButton"]
     lazy var resultLabel = app.staticTexts["ResultLabel"]
+    lazy var deleteKey = app.keys["delete"]
     
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -41,7 +42,7 @@ class reverseUITests: XCTestCase {
         
         let numberOfSymbols = inputTF.value.debugDescription.count
         for _ in 1...numberOfSymbols - 10 {
-            app.keys["delete"].tap()
+            deleteKey.tap()
         }
                 
         XCTAssertEqual(inputTF.placeholderValue, "Text to reverse")
