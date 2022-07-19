@@ -9,9 +9,9 @@ import UIKit
 
 final class ReverseWordsViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var reversedText: UILabel!
+    @IBOutlet weak private var textField: UITextField!
+    @IBOutlet weak private var button: UIButton!
+    @IBOutlet weak private var reversedText: UILabel!
     
     //words to reverse
     private var sentence = "" 

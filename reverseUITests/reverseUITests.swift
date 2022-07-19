@@ -9,60 +9,49 @@ import XCTest
 
 class reverseUITests: XCTestCase {
     
-    let inputTF = XCUIApplication().textFields["InputTF"]
-    let button = XCUIApplication().buttons["ReverseButton"]
-
+    var app: XCUIApplication!
+    lazy var inputTF = app.textFields["InputTF"]
+    lazy var button = app.buttons["ReverseButton"]
+    lazy var resultLabel = app.staticTexts["ResultLabel"]
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
-    }
-
-    override func tearDownWithError() throws {
-    }
-
-    func testSimpleInput() throws {
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
-        
-        inputTF.tap()
-        inputTF.typeText("Test string")
-        app.buttons["Return"].tap()
-        
-        button.tap(withNumberOfTaps: 2, numberOfTouches: 1)
-        
-        let result = app.staticTexts["ResultLabel"]
-        let expectedResult = "tseT gnirts"
-        XCTAssertEqual(expectedResult, result.label)
     }
     
-    func testInputAndEditing() throws {
-        let app = XCUIApplication()
-        app.launch()
+    func test_correctReversedLabel() throws {
+        simpleInput()
         
-        inputTF.tap()
-        inputTF.typeText("Test string")
-        app.buttons["Return"].tap()
-        
+        let result = resultLabel.label
+        let expectedResult = "tseT gnirts"
+        XCTAssertEqual(expectedResult, result)
+    }
+    
+    func test_correctButtonTitle() throws {
+        simpleInput()
+        XCTAssertEqual(button.label, "Clear")
         button.tap()
-        
+        XCTAssertEqual(button.label, "Reverse")
+    }
+    
+    func test_correctPlaceHolder() throws {        
+        simpleInput()
         inputTF.tap()
-        inputTF.typeText(" One more string")
-        app.buttons["Return"].tap()
-
-        button.tap()
         
-        inputTF.tap()
         let numberOfSymbols = inputTF.value.debugDescription.count
-        
         for _ in 1...numberOfSymbols - 10 {
             app.keys["delete"].tap()
         }
-        inputTF.typeText("New string")
-        app.buttons["Return"].tap()
-        button.tap(withNumberOfTaps: 2, numberOfTouches: 1)
-        
-        let result = app.staticTexts["ResultLabel"]
-        let expectedResult = "weN gnirts"
-        XCTAssertEqual(expectedResult, result.label)
-
+                
+        XCTAssertEqual(inputTF.placeholderValue, "Text to reverse")
     }
+    
+    func simpleInput() {
+        inputTF.tap()
+        inputTF.typeText("Test string")
+        app.buttons["Return"].tap()
+        button.tap()
+    }
+    
 }
