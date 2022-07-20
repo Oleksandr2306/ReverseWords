@@ -10,7 +10,7 @@ import XCTest
 class reverseUITests: XCTestCase {
     
     var app: XCUIApplication!
-    lazy var inputTF = app.textFields["InputTF"]
+    lazy var inputTextField = app.textFields["InputTF"]
     lazy var button = app.buttons["ReverseButton"]
     lazy var resultLabel = app.staticTexts["ResultLabel"]
     lazy var deleteKey = app.keys["delete"]
@@ -22,37 +22,39 @@ class reverseUITests: XCTestCase {
     }
     
     func test_correctReversedLabel() throws {
-        simpleInput()
+        prepareStubbedInput()
         
         let result = resultLabel.label
         let expectedResult = "tseT gnirts"
         XCTAssertEqual(expectedResult, result)
     }
     
-    func test_correctButtonTitle() throws {
-        simpleInput()
-        XCTAssertEqual(button.label, "Clear")
+    func test_reverseButton_hasCorrectTitleAfterClear() throws {
+        prepareStubbedInput()
         button.tap()
         XCTAssertEqual(button.label, "Reverse")
     }
     
-    func test_correctPlaceHolder() throws {        
-        simpleInput()
-        inputTF.tap()
+    func test_textField_hasCorrectPlaceHolder() throws {
+        prepareStubbedInput()
+        inputTextField.tap()
         
-        let numberOfSymbols = inputTF.value.debugDescription.count
+        let numberOfSymbols = inputTextField.value.debugDescription.count
         for _ in 1...numberOfSymbols - 10 {
             deleteKey.tap()
         }
-                
-        XCTAssertEqual(inputTF.placeholderValue, "Text to reverse")
+        
+        if inputTextField.value.debugDescription.isEmpty {
+            XCTAssertEqual(inputTextField.placeholderValue, "Text to reverse")
+        }
     }
     
-    func simpleInput() {
-        inputTF.tap()
-        inputTF.typeText("Test string")
+    private func prepareStubbedInput() {
+        inputTextField.tap()
+        inputTextField.typeText("Test string")
         app.buttons["Return"].tap()
         button.tap()
+        XCTAssertEqual(button.label, "Clear")
     }
     
 }

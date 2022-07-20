@@ -41,9 +41,7 @@ final class ReverseWordsViewController: UIViewController {
         if isReversed {
             guard let inputText = textField.text else { return }
             sentence = inputText
-            reversedText.text = String(sentence.components(separatedBy: " ").map({
-                $0.reversed()
-            }).joined(separator: " "))
+            reversedText.text = TextReverseManager().reverse(sentence: sentence)
         } else {
             button.isEnabled.toggle()
             textField.text = ""
