@@ -10,12 +10,17 @@ import XCTest
 
 class reverseTests: XCTestCase {
     
+    var result: TextReverseManager!
+    
+    override func setUp() {
+        result = TextReverseManager()
+    }
+    
     func test_notEmptyTextField_reverseAlphabeticSymbols() throws {
         
         let input = "Test string"
         let expectedResult = "tseT gnirts"
-        let result = TextReverseManager().reverse(sentence: input)
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual(expectedResult, result.reversedText(sentence: input))
         
     }
     
@@ -23,8 +28,7 @@ class reverseTests: XCTestCase {
         
         let input = "3455654"
         let expectedResult = "4565543"
-        let result = TextReverseManager().reverse(sentence: input)
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual(expectedResult, result.reversedText(sentence: input))
         
     }
     
@@ -32,8 +36,7 @@ class reverseTests: XCTestCase {
         
         let input = "A"
         let expectedResult = "A"
-        let result = TextReverseManager().reverse(sentence: input)
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual(expectedResult, result.reversedText(sentence: input))
         
     }
     
@@ -41,9 +44,13 @@ class reverseTests: XCTestCase {
         
         let input = "🙂😌😀"
         let expectedResult = "😀😌🙂"
-        let result = TextReverseManager().reverse(sentence: input)
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual(expectedResult, result.reversedText(sentence: input))
         
+    }
+    
+    override func tearDown() {
+        result = nil
+        super.tearDown()
     }
     
 }

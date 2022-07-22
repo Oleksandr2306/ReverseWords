@@ -87,7 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="qLn-Dq-6x1" id="ZM0-2o-sCH"/>
-                        <outlet property="reversedText" destination="nm9-3v-GgB" id="n5a-Wv-SRo"/>
+                        <outlet property="reversedLabel" destination="nm9-3v-GgB" id="8bd-BF-wSW"/>
                         <outlet property="textField" destination="3kY-Oy-bH4" id="gNV-dY-Wsx"/>
                     </connections>
                 </viewController>

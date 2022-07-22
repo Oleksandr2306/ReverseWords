@@ -35,7 +35,7 @@ class reverseUITests: XCTestCase {
         XCTAssertEqual(button.label, "Reverse")
     }
     
-    func test_textField_hasCorrectPlaceHolder() throws {
+    func test_textField_hasCorrectPlaceholder() throws {
         prepareStubbedInput()
         inputTextField.tap()
         
