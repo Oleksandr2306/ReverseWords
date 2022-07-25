@@ -16,7 +16,12 @@ class reverseTests: XCTestCase {
         result = TextReverseManager()
     }
     
-    func test_notEmptyTextField_reverseAlphabeticSymbols() throws {
+    override func tearDown() {
+        result = nil
+        super.tearDown()
+    }
+    
+    func test_notEmptyTextField_reverseAlphabeticSymbols_defaultSegmentControl() throws {
         
         let input = "Test string"
         let expectedResult = "tseT gnirts"
@@ -24,7 +29,7 @@ class reverseTests: XCTestCase {
         
     }
     
-    func test_notEmptyTextField_reverseNumbers() throws {
+    func test_notEmptyTextField_reverseNumbers_defaultSegmentControl() throws {
         
         let input = "3455654"
         let expectedResult = "4565543"
@@ -32,7 +37,7 @@ class reverseTests: XCTestCase {
         
     }
     
-    func test_notEmptyTextField_reverseOnlyOneSymbol() throws {
+    func test_notEmptyTextField_reverseOnlyOneSymbol_defaultSegmentControl() throws {
         
         let input = "A"
         let expectedResult = "A"
@@ -40,7 +45,7 @@ class reverseTests: XCTestCase {
         
     }
     
-    func test_notEmptyTextField_reverseEmojies() throws {
+    func test_notEmptyTextField_reverseEmojies_defaultSegmentControl() throws {
         
         let input = "🙂😌😀"
         let expectedResult = "😀😌🙂"
@@ -48,9 +53,22 @@ class reverseTests: XCTestCase {
         
     }
     
-    override func tearDown() {
-        result = nil
-        super.tearDown()
+    func test_notEmptyTextField_reverseAlphabeticSymbolsAndNumbers_customSegmentControl() throws {
+        
+        let input = "Foxminded cool 24/7"
+        let expectedResult = "dexdnimoF oocl 7/42"
+        let exclusions = "xl"
+        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(phrase: input, ignoredCharacters: exclusions))
+        
+    }
+    
+    func test_notEmptyTextField_reverseEmojies_customSegmentControl() throws {
+        
+        let input = "🙂😌😀🦊"
+        let expectedResult = "😀😌🙂🦊"
+        let exclusions = "🦊"
+        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(phrase: input, ignoredCharacters: exclusions))
+        
     }
     
 }

@@ -9,9 +9,12 @@ import UIKit
 
 final class ReverseWordsViewController: UIViewController {
 
-    @IBOutlet weak private var textField: UITextField!
+    @IBOutlet weak private var inputTextField: UITextField!
+    @IBOutlet weak private var exclusionTextField: UITextField!
     @IBOutlet weak private var button: UIButton!
     @IBOutlet weak private var reversedLabel: UILabel!
+    @IBOutlet weak private var descriptionLabel: UILabel!
+    @IBOutlet weak private var segmentedControl: UISegmentedControl!
     
     //words to reverse
     private var sentence = "" 
@@ -27,6 +30,7 @@ final class ReverseWordsViewController: UIViewController {
         
     }
     
+    private var exceptionalCharacters = ""
     private lazy var textReverseManager = TextReverseManager()
         
     override func viewDidLoad() {
@@ -34,21 +38,36 @@ final class ReverseWordsViewController: UIViewController {
         
         reversedLabel.text = ""
         button.isEnabled = false
-        textField.delegate = self
-        textField.borderStyle = UITextField.BorderStyle.none
+        inputTextField.delegate = self
+        exclusionTextField.delegate = self
+        exclusionTextField.isHidden = true
+        inputTextField.borderStyle = UITextField.BorderStyle.none
+        exclusionTextField.borderStyle = UITextField.BorderStyle.none
     }
     
     @IBAction func buttonTapped() {
         isReversed.toggle()
         if isReversed {
-            guard let inputText = textField.text else { return }
+            guard let inputText = inputTextField.text else { return }
+            guard let exceptions = exclusionTextField.text else { return }
             sentence = inputText
-            reversedLabel.text = textReverseManager.reversedText(sentence: sentence)
+            if segmentedControl.selectedSegmentIndex == 0 {
+                reversedLabel.text = textReverseManager.reversedText(sentence: sentence)
+            } else {
+                reversedLabel.text = textReverseManager.reversedTextWithExclusions(phrase: sentence, ignoredCharacters: exceptions)
+            }
         } else {
             button.isEnabled.toggle()
-            textField.text = ""
+            inputTextField.text = ""
             reversedLabel.text = ""
         }
+    }
+    
+    @IBAction func segmentControlIndexChanged() {
+        isReversed = false
+        reversedLabel.text = ""
+        descriptionLabel.isHidden.toggle()
+        exclusionTextField.isHidden.toggle()
     }
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
@@ -67,9 +86,14 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let inputText = textField.text else { return }
-        sentence = inputText
-        button.isEnabled = !sentence.isEmpty
+        if textField == inputTextField {
+            guard let inputText = textField.text else { return }
+            sentence = inputText
+            button.isEnabled = !sentence.isEmpty
+        } else if textField == exclusionTextField {
+            guard let exceptionText = textField.text else { return }
+            exceptionalCharacters = exceptionText
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -78,11 +102,17 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        button.isEnabled = true
-        if isReversed {
-            isReversed.toggle()
+        if textField == inputTextField {
+            button.isEnabled = true
+            if isReversed {
+                isReversed.toggle()
+            }
+        } else if textField == exclusionTextField && inputTextField.text != "" {
+            button.isEnabled = true
+            if isReversed {
+                isReversed.toggle()
+            }
         }
-        
         return true
     }
 }
