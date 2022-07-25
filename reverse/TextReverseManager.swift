@@ -17,15 +17,15 @@ final class TextReverseManager {
                         .joined(separator: " "))
     }
     
-    func reversedTextWithExclusions(phrase: String, ignoredCharacters: String) -> String {
+    func reversedTextWithExclusions(sentence: String, ignoredCharacters: String) -> String {
         
-        if phrase.isEmpty {
+        if sentence.isEmpty {
             return ""
         }
         
         var result = ""
         
-        for word in phrase.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ") {
+        for word in sentence.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ") {
             
             var symbolsArray = word.map { String($0) }
             var left = 0

@@ -54,7 +54,7 @@ final class ReverseWordsViewController: UIViewController {
             if segmentedControl.selectedSegmentIndex == 0 {
                 reversedLabel.text = textReverseManager.reversedText(sentence: sentence)
             } else {
-                reversedLabel.text = textReverseManager.reversedTextWithExclusions(phrase: sentence, ignoredCharacters: exceptions)
+                reversedLabel.text = textReverseManager.reversedTextWithExclusions(sentence: sentence, ignoredCharacters: exceptions)
             }
         } else {
             button.isEnabled.toggle()

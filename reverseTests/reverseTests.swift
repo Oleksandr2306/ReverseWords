@@ -58,7 +58,7 @@ class reverseTests: XCTestCase {
         let input = "Foxminded cool 24/7"
         let expectedResult = "dexdnimoF oocl 7/42"
         let exclusions = "xl"
-        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(phrase: input, ignoredCharacters: exclusions))
+        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(sentence: input, ignoredCharacters: exclusions))
         
     }
     
@@ -67,7 +67,7 @@ class reverseTests: XCTestCase {
         let input = "🙂😌😀🦊"
         let expectedResult = "😀😌🙂🦊"
         let exclusions = "🦊"
-        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(phrase: input, ignoredCharacters: exclusions))
+        XCTAssertEqual(expectedResult, result.reversedTextWithExclusions(sentence: input, ignoredCharacters: exclusions))
         
     }
     
