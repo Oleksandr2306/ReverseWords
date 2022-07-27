@@ -8,7 +8,7 @@
 import XCTest
 @testable import reverse
 
-class reverseTests: XCTestCase {
+class defaultSegmentTests: XCTestCase {
     
     var result: TextReverseManager!
     
