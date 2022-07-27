@@ -12,10 +12,11 @@
 		F003C8072872F18D000DD10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F003C8052872F18D000DD10F /* Main.storyboard */; };
 		F003C8092872F18E000DD10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F003C8082872F18E000DD10F /* Assets.xcassets */; };
 		F003C80C2872F18E000DD10F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F003C80A2872F18E000DD10F /* LaunchScreen.storyboard */; };
-		F003C8172872F18E000DD10F /* reverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8162872F18E000DD10F /* reverseTests.swift */; };
+		F003C8172872F18E000DD10F /* reverseDefaultSegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8162872F18E000DD10F /* reverseDefaultSegmentTests.swift */; };
 		F003C8212872F18E000DD10F /* reverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8202872F18E000DD10F /* reverseUITests.swift */; };
 		F003C8232872F18E000DD10F /* reverseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003C8222872F18E000DD10F /* reverseUITestsLaunchTests.swift */; };
 		F01AFEE728883695006F0734 /* TextReverseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AFEE528883692006F0734 /* TextReverseManager.swift */; };
+		F0388EB72891603F009F572B /* reverseCustomSegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388EB62891603F009F572B /* reverseCustomSegmentTests.swift */; };
 		F0F17F482875BCB000EF37B8 /* ReverseWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F17F462875BCB000EF37B8 /* ReverseWordsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,11 +46,12 @@
 		F003C80B2872F18E000DD10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F003C80D2872F18E000DD10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F003C8122872F18E000DD10F /* reverseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reverseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F003C8162872F18E000DD10F /* reverseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseTests.swift; sourceTree = "<group>"; };
+		F003C8162872F18E000DD10F /* reverseDefaultSegmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseDefaultSegmentTests.swift; sourceTree = "<group>"; };
 		F003C81C2872F18E000DD10F /* reverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reverseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F003C8202872F18E000DD10F /* reverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseUITests.swift; sourceTree = "<group>"; };
 		F003C8222872F18E000DD10F /* reverseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F01AFEE528883692006F0734 /* TextReverseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReverseManager.swift; sourceTree = "<group>"; };
+		F0388EB62891603F009F572B /* reverseCustomSegmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseCustomSegmentTests.swift; sourceTree = "<group>"; };
 		F0F17F462875BCB000EF37B8 /* ReverseWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseWordsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +118,8 @@
 		F003C8152872F18E000DD10F /* reverseTests */ = {
 			isa = PBXGroup;
 			children = (
-				F003C8162872F18E000DD10F /* reverseTests.swift */,
+				F003C8162872F18E000DD10F /* reverseDefaultSegmentTests.swift */,
+				F0388EB62891603F009F572B /* reverseCustomSegmentTests.swift */,
 			);
 			path = reverseTests;
 			sourceTree = "<group>";
@@ -272,7 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F003C8172872F18E000DD10F /* reverseTests.swift in Sources */,
+				F003C8172872F18E000DD10F /* reverseDefaultSegmentTests.swift in Sources */,
+				F0388EB72891603F009F572B /* reverseCustomSegmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

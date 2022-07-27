@@ -86,14 +86,16 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let exceptionText = textField.text else { return }
+        exceptionalCharacters = exceptionText
+
         if textField == inputTextField {
             guard let inputText = textField.text else { return }
             sentence = inputText
             button.isEnabled = !sentence.isEmpty
-        } else if textField == exclusionTextField {
-            guard let exceptionText = textField.text else { return }
-            exceptionalCharacters = exceptionText
         }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -102,16 +104,15 @@ extension ReverseWordsViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if isReversed {
+            isReversed.toggle()
+        }
+        
         if textField == inputTextField {
             button.isEnabled = true
-            if isReversed {
-                isReversed.toggle()
-            }
         } else if textField == exclusionTextField && inputTextField.text != "" {
             button.isEnabled = true
-            if isReversed {
-                isReversed.toggle()
-            }
         }
         return true
     }

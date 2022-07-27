@@ -24,6 +24,17 @@ class reverseUITests: XCTestCase {
         app.launch()
     }
     
+    func test_defaultUI_exists() throws {
+        XCTAssertTrue(inputTextField.exists)
+        XCTAssertTrue(button.exists)
+        XCTAssertTrue(resultLabel.exists)
+    }
+    
+    func test_customUI_exists() throws {
+        customSegment.tap()
+        XCTAssertTrue(exclusionTextField.exists)
+    }
+    
     func test_correctReversedLabel_defaultSegmentControl() throws {
         prepareStubbedInput()
         
@@ -68,17 +79,6 @@ class reverseUITests: XCTestCase {
     func test_exclusionTextField_hasCorrectPlaceholder() throws {
         customSegment.tap()
         XCTAssertEqual(exclusionTextField.placeholderValue, "Text to ignore")
-    }
-    
-    func test_reverseButton_hasCorrectTitleAfterExclusionsInput() throws {
-        customSegment.tap()
-        prepareStubbedInput()
-        
-        exclusionTextField.tap()
-        exclusionTextField.typeText("ing")
-        app.buttons["Return"].tap()
-        
-        XCTAssertEqual(button.label, "Reverse")
     }
     
     private func prepareStubbedInput() {
